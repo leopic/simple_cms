@@ -11,8 +11,8 @@ development:
   reconnect: false
   database: simple_cms_development
   pool: 5
-  username: leopic
-  password: 33zkza8x
+  username: simple_cms
+  password: secretpassword
   host: localhost
 
 # Warning: The database defined as "test" will be erased and

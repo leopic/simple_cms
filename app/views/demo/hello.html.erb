@@ -5,6 +5,14 @@
 	<% target = "world" %>
 	<%= "hoda #{target}" %>
 	
-	<%= link_to("texto", {:action => 'index'}) %>
+	<%= link_to("texto", {:action => 'index'}) %> <br>
+	
+	correct output: <%= params['page'].to_i + 1 %> <br>	
+	incorrect output: <%= @page.to_i + 1 %> <br>
+	incorrect output: <%= @page + 1 %> <br>
+	
+	
+	
 	
 </div>
+

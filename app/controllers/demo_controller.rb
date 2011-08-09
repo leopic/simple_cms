@@ -7,6 +7,7 @@ class DemoController < ApplicationController
   
   def hello  	
   	#render(:text => 'oh hai')
+	@page = params[:page].to_i
   	render ('hello')
   end
   	
