@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects - List</title>
+    <link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/reset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/base-min.css">
+</head>
+<body>
+<div id="wrapper">
+    <h1>Update Subject</h1>
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
+	<%= form_for(:subject, :url => {:action => "update", :id => @subject.id}) do |f| %>
+	<table class="edit">
+		<tr>
+			<th>Name</th>
+			<td><%= f.text_field(:name) %>
+		</tr>
+		<tr>
+			<th>Position</th>
+			<td><%= f.text_field(:position) %>
+		</tr>
+		<tr>
+			<th>Visible</th>
+			<td><%= f.text_field(:visible) %>
+		</tr>
+	</table>
+	
+	<%= submit_tag("Update Subject") %>
+	<% end %>
+</div>
+</body>
+</html>

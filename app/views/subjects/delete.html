@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects - List</title>
+    <link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/reset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/base-min.css">
+</head>
+<body>
+<div id="wrapper">
+    <h1>Update Subject</h1>
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
+	<%= form_for(:subject, :url => {:action => "destroy", :id => @subject.id}) do |f| %>
+		<h2>se va a mandar el registro a lo macho?</h2>
+		<p><%= @subject.name %></p>
+		<%= submit_tag("Delete Subject") %>	
+	<% end %>
+</div>
+</body>
+</html>

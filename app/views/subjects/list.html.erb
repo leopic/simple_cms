@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects - List</title>
+    <link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/reset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/base-min.css">
+</head>
+<body>
+<div id="wrapper">
+    <h1>Subjects</h1>
+    
+    <% if !flash[:notice].blank? %>
+    	<h2><%= flash[:notice] %></h2>    
+    <% end %>
+    <nav>
+    	<%= link_to("Add New Subject", {:action => 'new'}, :class => "action new") %>
+    </nav>
+    <table class="list">
+    	<tr class="header">
+    		<th>Pos. </th>
+    		<th>Subject</th>
+    		<th>Visible</th>
+    		<th>Pages</th>
+    		<th>Actions</th>
+    	</tr>
+    	<% @subjects.each do |subject| %>
+    	<tr>
+    		<td><%= subject.position %></td>
+    		<td><%= subject.name %></td>
+    		<td><%= subject.visible ? 'Yes' : 'No' %></td>
+    		<td><%= subject.pages.size %></td>
+    		<td class="actions">
+				<%= link_to("Show", 	{:action => 'show', 	:id => subject.id }, 	:class => "action show") %>
+				<%= link_to("Edit", 	{:action => 'edit', 	:id => subject.id }, 	:class => "action edit") %>
+				<%= link_to("Delete", 	{:action => 'delete', 	:id => subject.id}, 	:class => "action delete") %>
+    		</td>
+    	</tr>    
+    	<% end %>
+    </table>
+</div>
+</body>
+</html>
