@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pages - Delete</title>
+    <title>Sections - Delete</title>
 </head>
 <body>
 <div id="wrapper">
-    <h1>Delete Page</h1>
+    <h1>Delete Sections</h1>
 	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
-	<%= form_for(:page, :url => {:action => "destroy", :id => @page.id}) do |f| %>
+	<%= form_for(:section, :url => {:action => "destroy", :id => @section.id}) do |f| %>
 		<h2>se va a mandar el registro a lo macho?</h2>
-		<p><%= @page.name %></p>
-		<%= submit_tag("Delete Page") %>	
+		<p><%= @section.name %></p>
+		<%= submit_tag("Delete Section") %>	
 	<% end %>
 </div>
 </body>

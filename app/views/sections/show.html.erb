@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subjects - New</title>
+</head>
+<body>
+<div id="wrapper">
+    <h1>Show  Subject</h1>
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>	
+	<table class="new">	
+		<tr>
+			<th>Name</th>
+			<td><%= @section.name %></td>
+		</tr>
+		<tr>
+			<th>Permalink</th>
+			<td><%= @section.permalink %></td>
+		</tr>				
+		<tr>
+			<th>Position</th>
+			<td><%= @section.position %></td>
+		</tr>
+		<tr>
+			<th>Visible</th>
+			<td><%= @section.visible %></td>
+		</tr>
+		<tr>
+			<th>Content Type</th>
+			<td><%= @section.content_type %></td>
+		</tr>
+		<tr>
+			<th>Content</th>
+			<td><%= @section.content %></td>
+		</tr>
+		<tr>
+			<th>Created At</th>
+			<td><%= @section.created_at %></td>
+		</tr>	
+		<tr>
+			<th>Updated at</th>
+			<td><%= @section.updated_at %></td>
+		</tr>	
+	</table>
+</div>
+</body>
+</html>

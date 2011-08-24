@@ -7,12 +7,16 @@
 <div id="wrapper">
     <h1>Add Subject</h1>
 	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
-	<%= form_for(:subject, :url => {:action => "create"}) do |f| %>
-	<table class="new">    		
+	<%= form_for(:section, :url => {:action => "update", :id => @section.id}) do |f| %>	
+	<table class="new">	
 		<tr>
 			<th>Name</th>
 			<td><%= f.text_field(:name) %>
 		</tr>
+		<tr>
+			<th>Permalink</th>
+			<td><%= f.text_field(:permalink) %>
+		</tr>				
 		<tr>
 			<th>Position</th>
 			<td><%= f.text_field(:position) %>
@@ -21,9 +25,17 @@
 			<th>Visible</th>
 			<td><%= f.text_field(:visible) %>
 		</tr>
+		<tr>
+			<th>Content Type</th>
+			<td><%= f.text_field(:content_type) %>
+		</tr>
+		<tr>
+			<th>Content</th>
+			<td><%= f.text_field(:content) %>
+		</tr>		
 	</table>
 	
-	<%= submit_tag("Create Subject") %>
+	<%= submit_tag("Update Section") %>
 	<% end %>
 </div>
 </body>
