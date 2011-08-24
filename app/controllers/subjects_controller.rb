@@ -14,6 +14,7 @@ class SubjectsController < ApplicationController
 	end
 	
 	def new
+	  #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
 		#@subject = Subject.new(:name => "default")
 	end
 	
@@ -55,11 +56,8 @@ class SubjectsController < ApplicationController
 	
 	def destroy
 		#nueva instancia usando parametros
-		#subject = Subject.find(params[:id])
 		Subject.find(params[:id]).destroy
-		#como no vamos a hacer nada con el objeto
-		#no ocupamos instanciarlo/mostrarlo, nos ahorramos
-		#la variable de instancia		
+		#como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
 		flash[:notice] = "Subject destroyed succesfully."
 		redirect_to(:action => "list")
 	end

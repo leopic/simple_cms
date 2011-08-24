@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pages - List</title>
+    <link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/reset-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/base-min.css">
+</head>
+<body>
+<div id="wrapper">
+    <h1>Add Page</h1>
+  <%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
+  <%= form_for(:page, :url => {:action => "create"}) do |f| %>
+  <table class="new">       
+    <tr>
+      <th>Name</th>
+      <td><%= f.text_field(:name) %>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= f.text_field(:position) %>
+    </tr>
+    <tr>
+      <th>Permalink</th>
+      <td><%= f.text_field(:permalink) %>
+    </tr>
+    <tr>
+      <th>Visible</th>
+      <td><%= f.text_field(:visible) %>
+    </tr>
+  </table>
+  
+  <%= submit_tag("Create Page") %>
+  <% end %>
+</div>
+</body>
+</html>
