@@ -30,4 +30,34 @@ class PagesController < ApplicationController
     end
   end
   
+  def edit
+    @page = Page.find(params[:id])
+  end 
+  
+  def update        
+    #nueva instancia usando parametros
+    @page = Page.find(params[:id])
+    #si el update funca
+    if @page.update_attributes(params[:page])
+      #redirecciona
+      flash[:notice] = "Page edited succesfully."
+      redirect_to(:action => "show", :id => @page.id)
+    else
+      #sino, lo manda de nuevo al edit
+      render('edit')
+    end
+  end  
+  
+  def delete
+    @page = Page.find(params[:id])
+  end
+  
+  def destroy
+    #nueva instancia usando parametros
+    Page.find(params[:id]).destroy
+    #como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
+    flash[:notice] = "Page destroyed succesfully."
+    redirect_to(:action => "list")
+  end  
+  
 end
