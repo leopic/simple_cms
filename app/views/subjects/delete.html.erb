@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subjects - Delete</title>
-</head>
-<body>
-<div id="wrapper">
+
     <h1>Update Subject</h1>
 	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
 	<%= form_for(:subject, :url => {:action => "destroy", :id => @subject.id}) do |f| %>
@@ -12,6 +6,3 @@
 		<p><%= @subject.name %></p>
 		<%= submit_tag("Delete Subject") %>	
 	<% end %>
-</div>
-</body>
-</html>

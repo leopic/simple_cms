@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subjects - List</title>
-</head>
-<body>
-<div id="wrapper">
-    <h1>Update Subject</h1>
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
+
+	<% @page_title = "subjects list" %>
+
+	<%= link_to("< Back to list", {:action => "list"}, :class => "btn" ) %>
 	<%= form_for(:subject, :url => {:action => "update", :id => @subject.id}) do |f| %>
-	<table class="edit">
-		<tr>
-			<th>Name</th>
-			<td><%= f.text_field(:name) %>
-		</tr>
-		<tr>
-			<th>Position</th>
-			<td><%= f.text_field(:position) %>
-		</tr>
-		<tr>
-			<th>Visible</th>
-			<td><%= f.text_field(:visible) %>
-		</tr>
-	</table>
+
+	<%= render(:partial => "form", :locals => {:f => f}) %>
 	
 	<%= submit_tag("Update Subject") %>
 	<% end %>
-</div>
-</body>
-</html>
