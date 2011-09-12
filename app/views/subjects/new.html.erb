@@ -1,30 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subjects - New</title>
-</head>
-<body>
-<div id="wrapper">
-    <h1>Add Subject</h1>
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
-	<%= form_for(:subject, :url => {:action => "create"}) do |f| %>
-	<table class="new">    		
-		<tr>
-			<th>Name</th>
-			<td><%= f.text_field(:name) %>
-		</tr>
-		<tr>
-			<th>Position</th>
-			<td><%= f.text_field(:position) %>
-		</tr>
-		<tr>
-			<th>Visible</th>
-			<td><%= f.text_field(:visible) %>
-		</tr>
-	</table>
+	<h1>Add Subject</h1>
 	
-	<%= submit_tag("Create Subject") %>
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+	
+	<%= form_for(:subject, :url => {:action => "create"}) do |f| %>
+
+		<%= render(:partial => "form", :locals => {:f => f}) %>
+	
+		<%= submit_tag("Create Subject", :class => "btn primary") %>
+		
 	<% end %>
-</div>
-</body>
-</html>

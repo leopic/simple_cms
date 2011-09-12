@@ -1,10 +1,15 @@
 
 	<% @page_title = "subjects list" %>
-
-	<%= link_to("< Back to list", {:action => "list"}, :class => "btn" ) %>
+	
+	<h1>Edit Subject</h1>
+	
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+	
 	<%= form_for(:subject, :url => {:action => "update", :id => @subject.id}) do |f| %>
 
-	<%= render(:partial => "form", :locals => {:f => f}) %>
+		<%= render(:partial => "form", :locals => {:f => f}) %>
 	
-	<%= submit_tag("Update Subject") %>
+		<%= submit_tag("Update Subject", :class => "btn info") %>
+		<%= link_to("Cancel", {:action => "list"}, :class => "back-link btn") %>
+		
 	<% end %>

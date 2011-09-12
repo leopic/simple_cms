@@ -1,8 +1,9 @@
-
-    <h1>Update Subject</h1>
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
-	<%= form_for(:subject, :url => {:action => "destroy", :id => @subject.id}) do |f| %>
-		<h2>se va a mandar el registro a lo macho?</h2>
-		<p><%= @subject.name %></p>
-		<%= submit_tag("Delete Subject") %>	
+    <h1>Delete Subject</h1>
+        
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn small") %>
+	
+	<%= form_for(:subject, :url => {:action => "destroy", :id => @subject.id}) do |f| %>		
+		<p>se va a mandar el registro <%= @subject.name %> a lo macho?</p>
+		<%= submit_tag("Delete", :class => "btn danger") %>	
+		<%= link_to("Cancel", {:action => "list"}, :class => "back-link btn") %>
 	<% end %>

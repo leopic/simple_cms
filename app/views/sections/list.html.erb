@@ -1,50 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sections - List</title>
-</head>
-<body>
-<div id="wrapper">
-    <h1>Sections</h1>    
-    <% if !flash[:notice].blank? %>
-    	<h2><%= flash[:notice] %></h2>    
-    <% end %>
-    <nav>
-    	<%= link_to("Add New Section", {:action => 'new'}, :class => "action new") %>
-    </nav>
+	<h1>Sections</h1>
+
+	<%= link_to("Add New Section", {:action => 'new'}, :class => "action new btn") %>
+	
     <table class="list">
     	<tr class="header">
-    		<th>ID</th>
+    		<th>Position</th>    		
     		<th>Name</th>
     		<th>Permalink</th>
-    		<th>Position</th>
     		<th>Visible</th>
     		<th>Content Type</th>
     		<th>Content</th>
-    		<th>Created at</th>
     		<th>Updated at</th>
     		<th>Page ID</th>
+    		<th>Actions</th>
     	</tr>
     	<% @sections.each do |section| %>
     	<tr>
-			<td><%= section.id %></td>
+			<td><%= section.position %></td>    		
     		<td><%= section.name %></td>
     		<td><%= section.permalink %></td>
-			<td><%= section.position %></td>
     		<td><%= section.visible ? 'Yes' : 'No' %></td>
     		<td><%= section.content_type %></td>
 			<td><%= section.content %></td>    		
-			<td><%= section.created_at %></td>
 			<td><%= section.updated_at %></td>
 			<td>"TBD"</td>
-    		<td class="actions">
-				<%= link_to("Show", 	{:action => 'show', 	:id => section.id }, 	:class => "action show") %>
-				<%= link_to("Edit", 	{:action => 'edit', 	:id => section.id }, 	:class => "action edit") %>
-				<%= link_to("Delete", 	{:action => 'delete', 	:id => section.id}, 	:class => "action delete") %>
+    		<td class="cta">
+				<%= link_to("Show", 	{:action => 'show', 	:id => section.id }, 	:class => "action show btn primary") %>
+				<%= link_to("Edit", 	{:action => 'edit', 	:id => section.id }, 	:class => "action edit btn info") %>
+				<%= link_to("Delete", 	{:action => 'delete', 	:id => section.id}, 	:class => "action delete btn danger") %>
     		</td>
     	</tr>    
     	<% end %>
     </table>
-</div>
-</body>
-</html>

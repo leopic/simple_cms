@@ -13,13 +13,18 @@
 </head>
 <body>
 <div class="container">
-	<h4 class="">:admin</h4>
+	<header>
+		<h1>:admin</h1>
+	</header>
+	
 	<% if !flash[:notice].blank?  %>
-	<h4 class="alert-message span-6 columns"><%= flash[:notice] %></h4>
+		<h4 class="alert-message span-6 columns"><%= flash[:notice] %></h4>
 	<% end %>
+	
 	<%= yield %>
+	
 	<footer>
-		<h6>LEOPiC</h6>
+		<h5>LEOPiC - git@github.com:leopic/simple_cms.git</h5>
 	</footer>
 </div>
 </body>

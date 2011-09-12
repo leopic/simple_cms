@@ -1,12 +1,8 @@
 	<% @page_title = "subjects list" %>
 	
-	<div class="row">
-		<h1 class="span6 columns">Subjects</h1>
-	</div>
+	<h1>Subjects</h1>	
     
-    <nav>
-    	<%= link_to("Add New Subject", {:action => 'new'}, :class => "action new btn") %>
-    </nav>
+  	<%= link_to("Add New Subject", {:action => 'new'}, :class => "action new btn") %>
     
     <table class="list">
     	<tr class="header">
@@ -14,6 +10,8 @@
     		<th>Subject</th>
     		<th>Visible</th>
     		<th>Pages</th>
+    		<th>Created at</th>
+    		<th>Updated at</th>    		
     		<th>Actions</th>
     	</tr>
     	<% @subjects.each do |subject| %>
@@ -22,6 +20,8 @@
     		<td><%= subject.name %></td>
     		<td><%= subject.visible ? 'Yes' : 'No' %></td>
     		<td><%= subject.pages.size %></td>
+			<td><%= subject.created_at %></td>
+    		<td><%= subject.updated_at %></td>    		
     		<td class="cta">
 				<%= link_to("Show", 	{:action => 'show', 	:id => subject.id }, 	:class => "action show btn primary") %>
 				<%= link_to("Edit", 	{:action => 'edit', 	:id => subject.id }, 	:class => "action edit btn info") %>

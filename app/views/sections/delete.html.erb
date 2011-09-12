@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sections - Delete</title>
-</head>
-<body>
-<div id="wrapper">
     <h1>Delete Sections</h1>
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>
+	
+	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+	
 	<%= form_for(:section, :url => {:action => "destroy", :id => @section.id}) do |f| %>
-		<h2>se va a mandar el registro a lo macho?</h2>
-		<p><%= @section.name %></p>
-		<%= submit_tag("Delete Section") %>	
+	
+		<p>se va a mandar el registro <%= @section.name %> a lo macho?</p>
+		<%= submit_tag("Delete", :class => "btn danger") %>	
+		<%= link_to("Cancel", {:action => "list"}, :class => "back-link btn") %>
+				
 	<% end %>
-</div>
-</body>
-</html>

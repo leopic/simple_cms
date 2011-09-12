@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page - List</title>
-</head>
-<body>
-<div id="wrapper">
-    <h1>Pages</h1>    
-    <% if !flash[:notice].blank? %>
-    	<h2><%= flash[:notice] %></h2>    
-    <% end %>
-    <nav>
-    	<%= link_to("Add New Page", {:action => 'new'}, :class => "action new") %>
-    </nav>
+
+	<h1>Pages</h1>
+
+  	<%= link_to("Add New Page", {:action => 'new'}, :class => "action new btn") %>
+    
     <table class="list">
     	<tr class="header">
     		<th>ID. </th>
@@ -21,6 +12,7 @@
 			<th>Visibile</th>
     		<th>Created at</th>
     		<th>Updated at</th>
+    		<th>Actions</th>
     	</tr>
     	<% @pages.each do |page| %>
     	<tr>
@@ -31,14 +23,12 @@
     		<td><%= page.visible ? 'Yes' : 'No' %></td>
 			<td><%= page.created_at %></td>
     		<td><%= page.updated_at %></td>
-    		<td class="actions">
-				<%= link_to("Show", 	{:action => 'show', 	:id => page.id }, 	:class => "action show") %>
-				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id }, 	:class => "action edit") %>
-				<%= link_to("Delete", 	{:action => 'delete', 	:id => page.id}, 	:class => "action delete") %>
+    		<td class="cta">
+				<%= link_to("Show", 	{:action => 'show', 	:id => page.id }, 	:class => "action show btn primary") %>
+				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id }, 	:class => "action edit btn info") %>
+				<%= link_to("Delete", 	{:action => 'delete', 	:id => page.id}, 	:class => "action delete btn danger") %>
     		</td>
-    	</tr>    
+    		
+    	</tr>
     	<% end %>
     </table>
-</div>
-</body>
-</html>
