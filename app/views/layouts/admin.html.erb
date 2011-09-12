@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>simpleCMS:<%= @page_title || 'admin' %></title>
-  <link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssreset/reset-min.css">
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssbase/base-min.css">
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-<div class="container">
-	<header>
-		<h1>:admin</h1>
-	</header>
-	
-	<% if !flash[:notice].blank?  %>
-		<h4 class="alert-message span-6 columns"><%= flash[:notice] %></h4>
-	<% end %>
-	
-	<%= yield %>
-	
-	<footer>
-		<h5>LEOPiC - git@github.com:leopic/simple_cms.git</h5>
-	</footer>
-</div>
-</body>
+	<head>
+		<title>simpleCMS:<%= @page_title || 'admin' %></title>
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssreset/reset-min.css">
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssfonts/fonts-min.css">
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssbase/base-min.css">
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
+		<%= stylesheet_link_tag :all %>
+		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
+		<div class="container">
+			<%= render :file => "common/_topnav" %>
+
+			<% if !flash[:notice].blank?  %> <h4 class="alert-message span-6 columns"><%= flash[:notice] %></h4>
+			<% end %>
+
+			<%= yield %>
+			<footer>
+				<h5>LEOPiC - git@github.com:leopic/simple_cms.git</h5>
+			</footer>
+		</div>
+	</body>
 </html>

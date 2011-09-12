@@ -12,7 +12,11 @@ class DemoController < ApplicationController
   end
   	
   def other_hello
-	redirect_to("http://google.com")
-  end		
+    redirect_to("http://google.com")
+  end
+  
+  def javascript
+    
+    end		
 
 end
