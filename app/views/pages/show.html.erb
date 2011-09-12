@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pages - List</title>
-</head>
-<body>
-<div id="wrapper">
-    <%= link_to("< Back to list", {:action => "list"}, :class => "back-link") %>    
-    <h1>Show Page</h1>    
+
+    <h1>Show Page</h1>
+    
+    <%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+        
     <table>
     	<tr>
     		<th>ID</th>
@@ -37,6 +33,3 @@
     		<td><%= @page.updated_at %></td>
     	</tr>    	
 	</table>
-</div>
-</body>
-</html>
