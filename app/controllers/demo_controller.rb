@@ -16,7 +16,9 @@ class DemoController < ApplicationController
   end
   
   def javascript
-    
-    end		
+  end
+  
+  def text_helpers
+  end		
 
 end

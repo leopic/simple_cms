@@ -1,0 +1,41 @@
+    <header>
+      <h1>text_helpers.html</h1>
+    </header>
+
+	<%
+		text = "This is a long text example for \n leonardopicado.com,
+		esto es un break doble \n\n HAMMA TIMA! \n\n Es un poco largo pero meh
+		guarever apple-touch-icon, apple-touch-icon, apple-touch-icon, apple-touch-icon
+		Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references
+		http://leonardopicado.com/"
+	%>
+	
+	<h2>word_wrap</h2>
+	<%= word_wrap(text, :line_width => 30) %>
+	<hr />
+
+	<h2>simple_format</h2>
+	<%= simple_format(text) %>
+	<hr />
+	
+	<h2>simple_format + word_wrap</h2>
+	<%= simple_format(word_wrap(text, :line_width => 30)) %>
+	<hr />
+
+	<h2>truncate</h2>
+	<%= truncate(text, :length => 40, :omission => ".].[.") %>
+	<hr />	
+	
+	<h2>excerpt</h2>
+	<%= excerpt(text, "apple", :radius => 3, :omission => "///") %>
+	<hr />
+	
+	<h2>highlight</h2>
+	<%= highlight(text, "break") %>
+	<hr />
+	<%= highlight(text, ["break", "long"], :highlighter => "<em>\1</em>") %>
+	<hr />
+	
+	<h2>auto_link</h2>
+	<%= auto_link(text) %>
+	<hr />	
