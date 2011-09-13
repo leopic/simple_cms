@@ -1,3 +1,5 @@
+    <% @page_title = "subjects show" %>
+    
     <h1>Subject: <%= @subject.name %></h1>
 	
 	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>	
@@ -17,10 +19,10 @@
 	    </tr>
 	    <tr>
 	            <th>Created</th>
-	            <td><%= @subject.created_at %></td>
+	            <td><%= @subject.created_at.strftime("%m/%d/%y") %></td>
 	    </tr>
 	    <tr>
 	            <th>Updated</th>
-	            <td><%= @subject.updated_at %></td>
+	            <td><%= @subject.updated_at.strftime("%m/%d/%y") %></td>
 	    </tr>
     </table>

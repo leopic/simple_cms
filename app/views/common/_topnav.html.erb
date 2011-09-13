@@ -5,16 +5,13 @@
               <div class="container">
                 <h3><a href="/">simpleCMS</a></h3>
                 <ul class="nav">
-                  <li class="active">
-                    <a href="#">Home</a>
-                  </li>
-                  <li>
+                  <li <% if @page_title && @page_title.index("page") %> class="active" <% end %> >
                     <a href="/pages">Pages</a>
                   </li>
-                  <li>
+                  <li <% if @page_title && @page_title.index("section") %> class="active" <% end %> >
                     <a href="/sections">Sections</a>
                   </li>
-                  <li>
+                  <li <% if @page_title && @page_title.index("subject") %> class="active" <% end %> >
                     <a href="/subjects">Subjects</a>
                   </li>
                   <li>

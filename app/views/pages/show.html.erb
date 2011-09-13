@@ -1,4 +1,5 @@
-
+	<% @page_title = "page show" %>
+	
     <h1>Show Page</h1>
     
     <%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
@@ -26,10 +27,10 @@
     	</tr>
     	<tr>
     		<th>Created</th>
-    		<td><%= @page.created_at %></td>
+    		<td><%= @page.created_at.strftime("%m/%d/%y") %></td>
     	</tr>
     	<tr>
     		<th>Updated</th>
-    		<td><%= @page.updated_at %></td>
+    		<td><%= @page.updated_at.strftime("%m/%d/%y") %></td>
     	</tr>    	
 	</table>

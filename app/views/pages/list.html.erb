@@ -1,4 +1,5 @@
-
+	<% @page_title = "pages list" %>
+	
 	<h1>Pages</h1>
 
   	<%= link_to("Add New Page", {:action => 'new'}, :class => "action new btn") %>
@@ -10,8 +11,8 @@
     		<th>Permalink</th>
     		<th>Position</th>
 			<th>Visibile</th>
-    		<th>Created at</th>
-    		<th>Updated at</th>
+    		<th>Created</th>
+    		<th>Updated</th>
     		<th>Actions</th>
     	</tr>
     	<% @pages.each do |page| %>
@@ -21,8 +22,8 @@
     		<td><%= page.permalink %></td>
     		<td><%= page.position %></td>
     		<td><%= page.visible ? 'Yes' : 'No' %></td>
-			<td><%= page.created_at %></td>
-    		<td><%= page.updated_at %></td>
+			<td><%= page.created_at.strftime("%m/%d/%y") %></td>
+    		<td><%= page.updated_at.strftime("%m/%d/%y") %></td>
     		<td class="cta">
 				<%= link_to("Show", 	{:action => 'show', 	:id => page.id }, 	:class => "action show btn primary") %>
 				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id }, 	:class => "action edit btn info") %>

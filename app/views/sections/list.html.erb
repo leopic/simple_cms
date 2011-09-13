@@ -1,3 +1,5 @@
+	<% @page_title = "sections list" %>	
+	
 	<h1>Sections</h1>
 
 	<%= link_to("Add New Section", {:action => 'new'}, :class => "action new btn") %>
@@ -10,8 +12,7 @@
     		<th>Visible</th>
     		<th>Content Type</th>
     		<th>Content</th>
-    		<th>Updated at</th>
-    		<th>Page ID</th>
+    		<th>Updated</th>
     		<th>Actions</th>
     	</tr>
     	<% @sections.each do |section| %>
@@ -22,8 +23,7 @@
     		<td><%= section.visible ? 'Yes' : 'No' %></td>
     		<td><%= section.content_type %></td>
 			<td><%= section.content %></td>    		
-			<td><%= section.updated_at %></td>
-			<td>"TBD"</td>
+			<td><%= section.updated_at.strftime("%m/%d/%y") %></td>
     		<td class="cta">
 				<%= link_to("Show", 	{:action => 'show', 	:id => section.id }, 	:class => "action show btn primary") %>
 				<%= link_to("Edit", 	{:action => 'edit', 	:id => section.id }, 	:class => "action edit btn info") %>
