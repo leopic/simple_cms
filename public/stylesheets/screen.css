@@ -8,3 +8,6 @@
 body {
 	padding: 60px 0 0 0;
 }
+
+.status { display: inline-block; height: 12px; width: 0; border:1px solid red; cursor: default; }
+

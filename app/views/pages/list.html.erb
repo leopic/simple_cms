@@ -21,7 +21,7 @@
 			<td><%= page.name %></td>
     		<td><%= page.permalink %></td>
     		<td><%= page.position %></td>
-    		<td><%= page.visible ? 'Yes' : 'No' %></td>
+    		<td><%= status_tag(page.visible) %></td>
 			<td><%= page.created_at.strftime("%m/%d/%y") %></td>
     		<td><%= page.updated_at.strftime("%m/%d/%y") %></td>
     		<td class="cta">

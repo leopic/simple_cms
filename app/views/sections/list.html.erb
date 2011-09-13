@@ -20,7 +20,7 @@
 			<td><%= section.position %></td>    		
     		<td><%= section.name %></td>
     		<td><%= section.permalink %></td>
-    		<td><%= section.visible ? 'Yes' : 'No' %></td>
+    		<td><%= status_tag(section.visible) %></td>
     		<td><%= section.content_type %></td>
 			<td><%= section.content %></td>    		
 			<td><%= section.updated_at.strftime("%m/%d/%y") %></td>

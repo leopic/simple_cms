@@ -18,7 +18,7 @@
     	<tr>
     		<td><%= subject.position %></td>
     		<td><%= subject.name %></td>
-    		<td><%= subject.visible ? 'Yes' : 'No' %></td>
+    		<td><%= status_tag(subject.visible) %></td>
     		<td><%= subject.pages.size %></td>
 			<td><%= subject.created_at.strftime("%m/%d/%y") %></td>
     		<td><%= subject.updated_at.strftime("%m/%d/%y") %></td>    		
