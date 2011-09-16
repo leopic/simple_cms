@@ -1,28 +1,23 @@
-    <% @page_title = "subjects show" %>
-    
-    <h1>Subject: <%= @subject.name %></h1>
-	
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>	
-	
-	<table>
-	    <tr>
-	            <th>Name</th>
-	            <td><%= @subject.name %></td>
-	    </tr>
-	    <tr>
-	            <th>Position</th>
-	            <td><%= @subject.position %></td>
-	    </tr>
-	    <tr>
-	            <th>Visible</th>
-	            <td><%= @subject.visible %></td>
-	    </tr>
-	    <tr>
-	            <th>Created</th>
-	            <td><%= @subject.created_at.strftime("%m/%d/%y") %></td>
-	    </tr>
-	    <tr>
-	            <th>Updated</th>
-	            <td><%= @subject.updated_at.strftime("%m/%d/%y") %></td>
-	    </tr>
-    </table>
+<% @page_title = "subjects show" %> <h1>Subject: <%= @subject.name %></h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+<div class="row">
+	<div class="span4">
+		<h2>Name</h2>
+		<p><%= @subject.name %></p>
+	</div>
+	<div class="span4">
+		<h2>Position</h2>
+		<p><%= @subject.position %></p>
+	</div>
+	<div class="span4">
+		<h2>Visible</h2>
+		<p><%= @subject.visible %></p>
+	</div>
+
+<div class="span3">
+	<h3>Created At</h3>
+	<p><%= @subject.created_at.strftime("%m/%d/%y") %></p>
+	<h3>Updated at</h3>
+	<p><%= @subject.updated_at.strftime("%m/%d/%y") %></p>
+</div>
+</div> 

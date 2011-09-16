@@ -1,36 +1,29 @@
-	<% @page_title = "page show" %>
+<% @page_title = "page show" %>
+
+<h1>Show Page</h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
+
+<div class="row">
+	<div class="span6">
+		<h2>ID</h2>
+		<p><%= @page.id %></p>
+		<h2>Name</h2>
+		<p><%= @page.name %></p>
+		<h2>Permalink</h2>
+		<p><%= @page.permalink %></p>
+	</div>
 	
-    <h1>Show Page</h1>
-    
-    <%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
-        
-    <table>
-    	<tr>
-    		<th>ID</th>
-    		<td><%= @page.id %></td>
-    	</tr>
-    	<tr>
-    		<th>Name</th>
-    		<td><%= @page.name %></td>
-    	</tr>
-    	<tr>
-    		<th>Permalink</th>
-    		<td><%= @page.permalink %></td>
-    	</tr>
-    	<tr>
-    		<th>Position</th>
-    		<td><%= @page.position %></td>
-    	</tr>
-    	<tr>
-    		<th>Visible</th>
-    		<td><%= @page.visible %></td>
-    	</tr>
-    	<tr>
-    		<th>Created</th>
-    		<td><%= @page.created_at.strftime("%m/%d/%y") %></td>
-    	</tr>
-    	<tr>
-    		<th>Updated</th>
-    		<td><%= @page.updated_at.strftime("%m/%d/%y") %></td>
-    	</tr>    	
-	</table>
+	<div class="span6">
+		<h2>Position</h2>
+		<p><%= @page.position %></p>
+		<h2>Visible</h2>
+		<p><%= @page.visible %></p>
+	</div>
+
+	<div class="span4">
+		<h3>Created At</h3>
+		<p><%= @page.created_at.strftime("%m/%d/%y") %></p>
+		<h3>Updated at</h3>
+		<p><%= @page.updated_at.strftime("%m/%d/%y") %></p>
+	</div>
+</div>
