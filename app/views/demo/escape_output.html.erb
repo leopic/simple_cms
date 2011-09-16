@@ -1,0 +1,10 @@
+<h1>escaping output</h1>
+<% evil_string = "<script>alert('yeah')</script>"  %>
+<% good_string = "welcome to my <strong>site</strong>" %>
+<% chau_links = "leo at <a href='http://notsafe.com/fd'>visit me</a>" %>
+<% chau_links2 = "leo at <a href='http://leonardopicado.com/fd'>visit me</a>".html_safe %>
+
+<p><%= evil_string %></p>
+<p><%= raw(good_string) %></p>
+<p><%= strip_links(chau_links) %></p>
+<p><%= chau_links2 %></p>

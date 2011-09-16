@@ -20,7 +20,7 @@
 		<p><%= @section.content_type %></p>
 		
 		<h2>Content</h2>
-		<p><%= @section.content %></p>
+		<p><%= sanitize(@section.content, :tags => ['p', 'br', 'strong', 'em'], :attributes => ['id', 'class', 'style']) %></p>
 		
 		<h2>Visible</h2>
 		<p><%= @section.visible %></p>		
