@@ -1,27 +1,27 @@
 	<% @page_title = "subjects list" %>
 	
-	<h1>Subjects</h1>	
+	<h1>All Subjects</h1>	
     
   	<%= link_to("Add New Subject", {:action => 'new'}, :class => "action new btn") %>
     
     <table class="list">
     	<tr class="header">
-    		<th>Pos. </th>
+    		<th>Position</th>
     		<th>Subject</th>
-    		<th>Visible</th>
     		<th>Pages</th>
     		<th>Created</th>
     		<th>Updated</th>
     		<th>Actions</th>
+    		<th>Visible</th>    		
     	</tr>
     	<% @subjects.each do |subject| %>
     	<tr>
     		<td><%= subject.position %></td>
     		<td><%= subject.name %></td>
-    		<td><%= status_tag(subject.visible) %></td>
     		<td><%= subject.pages.size %></td>
 			<td><%= subject.created_at.strftime("%m/%d/%y") %></td>
-    		<td><%= subject.updated_at.strftime("%m/%d/%y") %></td>    		
+    		<td><%= subject.updated_at.strftime("%m/%d/%y") %></td>
+			<td><%= status_tag(subject.visible) %></td>
     		<td class="cta">
 				<%= link_to("Show", 	{:action => 'show', 	:id => subject.id }, 	:class => "action show btn primary") %>
 				<%= link_to("Edit", 	{:action => 'edit', 	:id => subject.id }, 	:class => "action edit btn info") %>

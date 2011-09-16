@@ -18,6 +18,8 @@ class SubjectsController < ApplicationController
 	def new
 	  #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
 		#@subject = Subject.new(:name => "default")
+		@subject = Subject.new
+		@subject_count = Subject.count + 1
 	end
 	
 	def create
@@ -30,12 +32,14 @@ class SubjectsController < ApplicationController
 			redirect_to(:action => "list")
 		else
 			#sino, lo manda de nuevo al new
-			render("new")
+			@subject_count = Subject.count + 1
+			render("new")			
 		end
 	end
 	
 	def edit
 		@subject = Subject.find(params[:id])
+		@subject_count = Subject.count
 	end	
 	
 	def update				
@@ -48,6 +52,7 @@ class SubjectsController < ApplicationController
 			redirect_to(:action => "show", :id => @subject.id)
 		else
 			#sino, lo manda de nuevo al edit
+			@subject_count = Subject.count + 1
 			render("edit")
 		end
 	end

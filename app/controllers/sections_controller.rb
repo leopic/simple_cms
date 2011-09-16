@@ -16,6 +16,9 @@ class SectionsController < ApplicationController
   def new
     #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
     #@section = Section.new(:name => "default")
+    @section = Section.new
+    @sections_count = Section.count + 1
+    @pages_available = Page.all(:select => :id).collect(&:id)
   end
   
   def create
@@ -28,12 +31,16 @@ class SectionsController < ApplicationController
       redirect_to(:action => "list")
     else
       #sino, lo manda de nuevo al new
+      @sections_count = Section.count + 1
+      @pages_available = Page.all(:select => :id).collect(&:id)
       render("new")
     end
   end
   
   def edit
     @section = Section.find(params[:id])
+    @sections_count = Section.count
+    @pages_available = Page.all(:select => :id).collect(&:id)
   end 
   
   def update        
@@ -46,6 +53,8 @@ class SectionsController < ApplicationController
       redirect_to(:action => "show", :id => @section.id)
     else
       #sino, lo manda de nuevo al edit
+      @sections_count = Section.count
+      @pages_available = Page.all(:select => :id).collect(&:id)
       render("edit")
     end
   end

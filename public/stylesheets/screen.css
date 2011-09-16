@@ -11,3 +11,7 @@ body {
 
 .status { display: inline-block; height: 12px; width: 0; border:1px solid red; cursor: default; }
 
+
+.topbar-wrapper h3 a {
+	font-family: "Oswald", sans-serif;
+}
