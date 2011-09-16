@@ -1,12 +1,11 @@
-	<% @page_title = "sections new" %>
+<% @page_title = "sections new" %> <h1>Add Section</h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
 
-    <h1>New Section</h1>
-	
-	<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
-	
-	<%= form_for(:section, :url => {:action => "create"}) do |f| %>	
-	
-		<%= render(:partial => "form", :locals => {:f => f}) %>
-	
-		<%= submit_tag("Create Section", :class => "btn primary") %>
-	<% end %>
+<%= form_for(:section, :url => {:action => "create"}, :html => {:class => "form"} ) do |f| %>
+
+<%= render(:partial => "form", :locals => {:f => f}) %>
+<div class="actions">
+	<%= submit_tag("Create Section", :class => "btn primary") %>
+	<%= link_to("Cancel", {:action => "list"}, :class => "btn") %>
+</div>
+<% end %> 

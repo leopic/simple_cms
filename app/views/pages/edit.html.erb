@@ -1,13 +1,11 @@
-	<% @page_title = "page edit" %>
+<% @page_title = "page edit" %> <h1>Edit Page</h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
 
-	<h1>Edit Page</h1>
-	
-  	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
-  	
-  	<%= form_for(:page, :url => {:action => "update", :id => @page.id}) do |f| %>
+<%= form_for(:page, :url => {:action => "update", :id => @page.id}) do |f| %>
 
-		<%= render(:partial => "form", :locals => {:f => f}) %>
-		
-		<%= submit_tag("Edit Page", :class => "btn info") %>
-	  
-  	<% end %>
+<%= render(:partial => "form", :locals => {:f => f}) %>
+<div class="actions">
+	<%= submit_tag("Edit Page", :class => "btn info") %>
+	<%= link_to("Cancel", {:action => "list"}, :class => "back-link btn") %>
+</div>
+<% end %>

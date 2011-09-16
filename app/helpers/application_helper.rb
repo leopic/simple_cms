@@ -10,9 +10,11 @@ module ApplicationHelper
       content_tag(:span, options[:true], :class => options[:true_class])
     else
       content_tag(:span, options[:false], :class => options[:false_class])
-    end
-    
-        
+    end        
+  end
+  
+  def error_messages_for(object)
+    render(:partial => "common/error_messages", :locals => {:object => object})
   end
   
 end

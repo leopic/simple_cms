@@ -1,29 +1,44 @@
-<table>
-		<tr>
-			<th>Page ID</th>
-			<td><%= f.select(:page_id, @pages_available) %></td>
-		</tr>	
-		<tr>
-			<th>Name</th>
-			<td><%= f.text_field(:name) %></td>
-		</tr>				
-		<tr>
-			<th>Position</th>
-			<td><%= f.select(:position, 1..@sections_count) %></td>
-		</tr>
-		<tr>
-			<th>Content Type</th>
-			<td>
-				<%= f.radio_button(:content_type, 'text') %> Text
-				<%= f.radio_button(:content_type, 'html') %> HTML
-			</td>
-		</tr>		
-		<tr>
-			<th>Visible</th>
-			<td><%= f.check_box(:visible) %></td>
-		</tr>
-		<tr>
-			<th>Content</th>
-			<td><%= f.text_area(:content, :size => '40x10') %></td>
-		</tr>		
-</table>
+<%= error_messages_for(@section) %>
+
+<div class="clearfix">
+	<%= f.label(:page_id) %>
+	<div class="input">
+		<%= f.select(:page_id, @pages_available) %>
+	</div>
+</div>
+
+<div class="clearfix">
+	<%= f.label(:name) %>
+	<div class="input">
+		<%= f.text_field(:name) %>
+	</div>
+</div>
+
+<div class="clearfix">
+	<%= f.label(:position) %>
+	<div class="input">
+		<%= f.select(:position, 1..@sections_count) %>
+	</div>
+</div>
+
+<div class="clearfix">
+	<%= f.label(:content_type) %>
+	<div class="input">
+		<%= f.radio_button(:content_type, 'text') %> Text
+		<%= f.radio_button(:content_type, 'html') %> HTML
+	</div>
+</div>
+
+<div class="clearfix">
+	<%= f.label(:visible) %>
+	<div class="input">
+		<%= f.check_box(:visible) %>
+	</div>
+</div>
+
+<div class="clearfix">
+	<%= f.label(:content) %>
+	<div class="input">
+		<%= f.text_area(:content, :size => '40x10') %>
+	</div>
+</div>

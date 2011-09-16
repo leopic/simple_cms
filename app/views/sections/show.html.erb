@@ -1,40 +1,36 @@
-	<% @page_title = "sections show" %>
+<% @page_title = "sections show" %>
 
-    <h1>Show Section</h1>
-    
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+<h1>Show Section</h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
+
+<div class="row">
+	<div class="span6">
+		<h2>Name</h2>
+		<p><%= @section.name %></p>
 		
-	<table>	
-		<tr>
-			<th>Name</th>
-			<td><%= @section.name %></td>
-		</tr>
-		<tr>
-			<th>Permalink</th>
-			<td><%= @section.permalink %></td>
-		</tr>				
-		<tr>
-			<th>Position</th>
-			<td><%= @section.position %></td>
-		</tr>
-		<tr>
-			<th>Visible</th>
-			<td><%= @section.visible %></td>
-		</tr>
-		<tr>
-			<th>Content Type</th>
-			<td><%= @section.content_type %></td>
-		</tr>
-		<tr>
-			<th>Content</th>
-			<td><%= @section.content %></td>
-		</tr>
-		<tr>
-			<th>Created At</th>
-			<td><%= @section.created_at %></td>
-		</tr>	
-		<tr>
-			<th>Updated at</th>
-			<td><%= @section.updated_at %></td>
-		</tr>	
-	</table>
+		<h2>Permalink</h2>
+		<p><%= @section.permalink %></p>
+		
+		<h2>Position</h2>
+		<p><%= @section.position %></p>		
+	</div>
+
+	<div class="span6">
+		<h2>Content Type</h2>
+		<p><%= @section.content_type %></p>
+		
+		<h2>Content</h2>
+		<p><%= @section.content %></p>
+		
+		<h2>Visible</h2>
+		<p><%= @section.visible %></p>		
+	</div>
+	
+	<div class="span4">
+		<h3>Created At</h3>
+		<p><%= @section.created_at %></p>
+		
+		<h3>Updated at</h3>
+		<p><%= @section.updated_at %></p>		
+	</div>
+</div>

@@ -1,18 +1,25 @@
-	<table>
-		<tr>
-			<th>Name</th>
-			<td><%= f.text_field(:name) %></td>
-		</tr>
-		<tr>
-			<th>Position</th>
-			<td><%= f.select(:position, 1..@subject_count) %></td>
-		</tr>
-		<tr>
-			<th>Visible</th>
-			<td><%= f.check_box(:visible) %></td>
-		</tr>
-		<tr>
-			<th>Created</th>
-			<td><%= f.datetime_select(:created_at, {:order => [:month, :day, :year], :discard_hour => true, :use_short_month => true}, {:class => "small"}) %></td>
-		</tr>		
-	</table>
+<%= error_messages_for(@subject) %>
+<div class="clearfix">
+	<%= f.label(:name) %>
+	<div class="input">
+		<%= f.text_field(:name) %>
+	</div>
+</div>
+<div class="clearfix">
+	<%= f.label(:position) %>
+	<div class="input">
+		<%= f.select(:position, 1..@subject_count) %>
+	</div>
+</div>
+<div class="clearfix">
+	<%= f.label(:invisible) %>
+	<div class="input">
+		<%= f.check_box(:visible) %>
+	</div>
+</div>
+<div class="clearfix">
+	<%= f.label(:created_at) %>
+	<div class="input">
+		<%= f.datetime_select(:created_at, {:order => [:month, :day, :year], :discard_hour => true, :use_short_month => true}, {:class => "small"}) %>
+	</div>
+</div>

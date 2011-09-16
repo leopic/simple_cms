@@ -1,14 +1,11 @@
-	
-	<% @page_title = "subjects add" %>
-	
-	<h1>Add Subject</h1>
-	
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
-	
-	<%= form_for(:subject, :url => {:action => "create"}) do |f| %>
+<% @page_title = "subjects add" %> <h1>Add Subject</h1>
+<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
 
-		<%= render(:partial => "form", :locals => {:f => f}) %>
-	
-		<%= submit_tag("Create Subject", :class => "btn primary") %>
-		
-	<% end %>
+<%= form_for(:subject, :url => {:action => "create"}, :class => "form-stacked") do |f| %>
+
+<%= render(:partial => "form", :locals => {:f => f}) %>
+<div class="actions">
+	<%= submit_tag("Create Subject", :class => "btn primary") %>
+	<%= link_to("Cancel", {:action => "list"}, :class => "btn") %>
+</div>
+<% end %> 
