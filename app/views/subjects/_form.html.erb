@@ -11,4 +11,8 @@
 			<th>Visible</th>
 			<td><%= f.check_box(:visible) %></td>
 		</tr>
+		<tr>
+			<th>Created</th>
+			<td><%= f.datetime_select(:created_at, {:order => [:month, :day, :year], :discard_hour => true, :use_short_month => true}, {:class => "small"}) %></td>
+		</tr>		
 	</table>
