@@ -1,7 +1,7 @@
 <% page_title = "Admin Menu" %>
 
 <div class="menu">
-	<h1>Admin Menu <small class="identity">logged in as: </small></h1>
+	<h1>Admin Menu <small class="identity">logged in as: <%= session[:username] %></small></h1>
 	<ul>
 		<li><%= link_to("Manage Subjects", :controller => 'subjects') %></li>
 		<li><%= link_to("Manage Pages", :controller => 'pages') %></li>
