@@ -25,6 +25,8 @@ class AdminUser < ActiveRecord::Base
 	
 	#scope :named, lambda {|first,last| where (:first_name => first, :last_name => last)}
 	
+	scope :sorted, order("admin_users.last_name ASC, admin_users.first_name ASC")
+	
 	# cuando se crea el usuario, se valida que 'password' exista
 	validates_length_of :password, :within => 8...25, :on => :create
 	
@@ -41,6 +43,11 @@ class AdminUser < ActiveRecord::Base
 	    return false
 	  end	  
 	end
+	
+	def name
+	  "#{first_name} #{last_name}"
+	end
+	
 	
 	def password_match?(password="")
 	  hashed_password == AdminUser.hash_with_salt(password, salt)
