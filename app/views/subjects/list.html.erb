@@ -22,9 +22,10 @@
     		<td><%= subject.updated_at.strftime("%m/%d/%y") %></td>
 			<td><%= status_tag(subject.visible) %></td>
     		<td class="cta">
-				<%= link_to("Show", 	{:action => 'show', 	:id => subject.id }, 	:class => "action show btn primary") %>
-				<%= link_to("Edit", 	{:action => 'edit', 	:id => subject.id }, 	:class => "action edit btn info") %>
-				<%= link_to("Delete", 	{:action => 'delete', 	:id => subject.id}, 	:class => "action delete btn danger") %>
+    			<%= link_to("View Pages", 	{:controller => 'pages',	:action => 'list', 		:subject_id => subject.id}, 	:class => "action show btn primary") %>
+				<%= link_to("Show", 		{:action => 'show', 		:id => subject.id}, 	:class => "action show btn primary") %>
+				<%= link_to("Edit", 		{:action => 'edit', 		:id => subject.id}, 	:class => "action edit btn info") %>
+				<%= link_to("Delete", 		{:action => 'delete', 		:id => subject.id}, 	:class => "action delete btn danger") %>
     		</td>
     	</tr>    
     	<% end %>

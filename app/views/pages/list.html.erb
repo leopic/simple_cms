@@ -1,7 +1,8 @@
 	<% @page_title = "pages list" %>
 	
 	<h1>All Pages</h1>
-  	<%= link_to("Add New Page", {:action => 'new'}, :class => "btn") %>
+  	<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => "btn") %>
+	<%= link_to("< Back to Subject List", {:controller => "subjects", :action => "list"}, :class => "back-link btn") %>
     
     <table class="list">
     	<tr class="header">
@@ -22,9 +23,9 @@
 			<td>TBD</td>    		
     		<td><%= status_tag(page.visible) %></td>
     		<td class="cta">
-				<%= link_to("Show", 	{:action => 'show', 	:id => page.id}, 	:class => "btn primary") %>
-				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id}, 	:class => "btn info") %>
-				<%= link_to("Delete", 	{:action => 'delete', 	:id => page.id}, 	:class => "btn danger") %>
+				<%= link_to("Show", 	{:action => 'show', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn primary") %>
+				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn info") %>
+				<%= link_to("Delete", 	{:action => 'delete', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn danger") %>
     		</td>    		
     	</tr>
     	<% end %>

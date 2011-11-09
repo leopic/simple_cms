@@ -6,20 +6,12 @@
                 <h3><a href="/">simpleCMS</a></h3>
                 <ul class="nav">
                   <li <% if @page_title && @page_title.index("subject") %> class="active" <% end %> >
-                    <a href="/subjects">Subjects</a>
+                    <a href="/subjects">Content</a>
                   </li>                	
-                  <li <% if @page_title && @page_title.index("page") %> class="active" <% end %> >
-                    <a href="/pages">Pages</a>
-                  </li>
-                  <li <% if @page_title && @page_title.index("section") %> class="active" <% end %> >
-                    <a href="/sections">Sections</a>
-                  </li>
                   <li <% if @page_title && @page_title.index("admin_users") %> class="active" <% end %> >
-                    <a href="/admin_users">AdminUsers</a>
+                    <a href="/admin_users">Users</a>
                   </li>                  
-                  <li>
-                    <a href="/demo">Demo</a>
-                  </li> 
+                  <li><%= link_to("logout", :action => 'logout') %></li>
                 </ul>
               </div>
             </div><!-- /topbar-inner -->

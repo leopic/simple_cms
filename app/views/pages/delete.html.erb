@@ -2,9 +2,9 @@
 	
     <h1>Delete Page</h1>
     
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+	<%= link_to("< Back to list", {:action => "list", :subject_id => @subject.id}, :class => "back-link btn") %>
 	
-	<%= form_for(:page, :url => {:action => "destroy", :id => @page.id}) do |f| %>
+	<%= form_for(:page, :url => {:action => "destroy", :id => @page.id, :subject_id => @subject.id}) do |f| %>
 		<h2><%= @page.name %></h2>
 		<p>se va a mandar el registro <%= @page.name %> a lo macho?</p>
 		<div class="actions">

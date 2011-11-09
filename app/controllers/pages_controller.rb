@@ -1,26 +1,27 @@
 class PagesController < ApplicationController
   
   before_filter :confirm_logged_in
+  before_filter :find_subject
   
   def index
     list
     render ('list')
   end
-  
+
   def list
-    @pages = Page.order("pages.position ASC")
+    @pages = Page.order("pages.position ASC").where(:subject_id => @subject.id)
   end
-  
+
   def show
     @page = Page.find(params[:id])
   end
-  
+
   def new
-    @page = Page.new
+    @page = Page.new(:subject_id => @subject.id)
     @pages_count = Page.count + 1
     @subjects_count = Subject.all(:select => :id).collect(&:id)
-  end  
-  
+  end
+
   def create
     #nueva instancia usando parametros
     @page = Page.new(params[:page])
@@ -29,7 +30,7 @@ class PagesController < ApplicationController
     if @page.save
       #redirecciona
       flash[:notice] = "Page created succesfully."
-      redirect_to(:action => "list")
+      redirect_to(:action => "list", :subject_id => @subject.id)
     else
       @pages_count = Page.count
       @subjects_count = Subject.all(:select => :id).collect(&:id)
@@ -42,23 +43,23 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     @pages_count = Page.count
     @subjects_count = Subject.all(:select => :id).collect(&:id)
-  end 
+  end
   
-  def update        
+  def update
     #nueva instancia usando parametros
     @page = Page.find(params[:id])
     #si el update funca
     if @page.update_attributes(params[:page])
       #redirecciona
       flash[:notice] = "Page edited succesfully."
-      redirect_to(:action => "show", :id => @page.id)
+      redirect_to(:action => "show", :id => @page.id, :subject_id => @page.subject_id)
     else
       @subjects_count = Subject.all(:select => :id).collect(&:id)
       @pages_count = Page.count
       #sino, lo manda de nuevo al edit
       render('edit')
     end
-  end  
+  end
   
   def delete
     @page = Page.find(params[:id])
@@ -69,7 +70,15 @@ class PagesController < ApplicationController
     Page.find(params[:id]).destroy
     #como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
     flash[:notice] = "Page destroyed succesfully."
-    redirect_to(:action => "list")
-  end  
+    redirect_to(:action => "list", :subject_id => @subject.id)
+  end
   
+  private
+  
+  def find_subject
+    if params[:subject_id]
+      @subject = Subject.find_by_id(params[:subject_id])
+    end
+  end
+
 end
