@@ -1,5 +1,8 @@
-<% @page_title = "subjects add" %> <h1>Add Subject</h1>
-<%= link_to("< Back to list", {:action => "list"}, :class => "btn") %>
+<% @page_title = "subjects add" %>
+
+<h1>Add Subject</h1>
+
+<%= link_to("< Back to subjects", {:action => "list"}, :class => "btn") %>
 
 <%= form_for(:subject, :url => {:action => "create"}, :class => "form-stacked") do |f| %>
 

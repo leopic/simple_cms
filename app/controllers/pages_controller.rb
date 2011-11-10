@@ -32,9 +32,9 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created succesfully."
       redirect_to(:action => "list", :subject_id => @subject.id)
     else
+      #sino, lo manda de nuevo al new
       @pages_count = Page.count
       @subjects_count = Subject.all(:select => :id).collect(&:id)
-      #sino, lo manda de nuevo al new
       render("new")
     end
   end
@@ -54,9 +54,9 @@ class PagesController < ApplicationController
       flash[:notice] = "Page edited succesfully."
       redirect_to(:action => "show", :id => @page.id, :subject_id => @page.subject_id)
     else
+      #sino, lo manda de nuevo al edit
       @subjects_count = Subject.all(:select => :id).collect(&:id)
       @pages_count = Page.count
-      #sino, lo manda de nuevo al edit
       render('edit')
     end
   end

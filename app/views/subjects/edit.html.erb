@@ -1,5 +1,8 @@
-<% @page_title = "subjects edit" %> <h1>Edit Subject</h1>
-<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>
+<% @page_title = "subjects edit" %>
+
+<h1>Edit Subject</h1>
+
+<%= link_to("< Back to subjects", {:action => "list"}, :class => "back-link btn") %>
 
 <%= form_for(:subject, :url => {:action => "update", :id => @subject.id}) do |f| %>
 

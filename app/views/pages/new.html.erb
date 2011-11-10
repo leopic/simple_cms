@@ -1,14 +1,16 @@
-<% @page_title = "page add" %>
+    <% @page_title = "page add" %>
 
-<h1>Add Page</h1>
+    <h1>Add Page</h1>
 
-<%= link_to("< Back to list", {:action => "list", :subject_id => @subject.id}, :class => "back-link btn") %>
+    <%= link_to("< Back to pages", {:action => "list", :subject_id => @subject.id}, :class => "back-link btn") %>
 
-<%= form_for(:page, :url => {:action => "create", :subject_id => @subject.id}) do |f| %>
+    <%= form_for(:page, :url => {:action => "create", :subject_id => @subject.id}) do |f| %>
 
-<%= render(:partial => "form", :locals => {:f => f}) %>
-<div class="actions">
-	<%= submit_tag("Create Page", :class => "btn primary") %>
-	<%= link_to("Cancel", {:action => "list"}, :class => "btn") %>
-</div>
-<% end %> 
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+        <div class="actions">
+            <%= submit_tag("Create Page", :class => "btn primary") %>
+            <%= link_to("Cancel", {:action => "list"}, :class => "btn") %>
+        </div>
+
+    <% end %>

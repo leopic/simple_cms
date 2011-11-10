@@ -27,3 +27,7 @@ body {
 .alert-message.error li {
 	color:#fff;
 }
+
+.btn {
+    text-transform: lowercase;
+}

@@ -1,28 +1,25 @@
 	<% @page_title = "pages list" %>
 	
 	<h1>All Pages</h1>
-  	<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => "btn") %>
-	<%= link_to("< Back to Subject List", {:controller => "subjects", :action => "list"}, :class => "back-link btn") %>
+	<%= link_to("< Back to Subjects", {:controller => "subjects", :action => "list"}, :class => "back-link btn") %>
+  	<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => "btn primary") %>
     
     <table class="list">
     	<tr class="header">
-			<th>Subject ID</th>
+			<th>Position</th>
     		<th>Name</th>
     		<th>Permalink</th>
-			<th>Position</th>			
-			<th>Sections</th>
 			<th>Visible</th>
     		<th>Actions</th>
     	</tr>
     	<% @pages.each do |page| %>
     	<tr>
-			<td><%= page.subject_id %></td>
-			<td><%= page.name %></td>
-    		<td><%= page.permalink %></td>			
     		<td><%= page.position %></td>
-			<td>TBD</td>    		
+			<td><%= page.name %></td>
+    		<td><%= page.permalink %></td>
     		<td><%= status_tag(page.visible) %></td>
     		<td class="cta">
+				<%= link_to("Child Sections", {:controller => 'sections', :action => 'list', :page_id => page.id, :subject_id => @subject.id}, 	:class => "btn") %>
 				<%= link_to("Show", 	{:action => 'show', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn primary") %>
 				<%= link_to("Edit", 	{:action => 'edit', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn info") %>
 				<%= link_to("Delete", 	{:action => 'delete', 	:id => page.id, :subject_id => @subject.id}, 	:class => "btn danger") %>

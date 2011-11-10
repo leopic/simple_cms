@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   
   before_filter :confirm_logged_in
+  before_filter :find_page
   
   def index
     list
@@ -8,7 +9,7 @@ class SectionsController < ApplicationController
   end
   
   def list
-    @sections = Section.order("sections.position ASC")
+    @sections = Section.order("sections.position ASC").where(:page_id => @page.id)
   end
   
   def show
@@ -18,7 +19,7 @@ class SectionsController < ApplicationController
   def new
     #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
     #@section = Section.new(:name => "default")
-    @section = Section.new
+    @section = Section.new(:page_id => @page.id)
     @sections_count = Section.count + 1
     @pages_available = Page.all(:select => :id).collect(&:id)
   end
@@ -30,7 +31,7 @@ class SectionsController < ApplicationController
     if @section.save
       #redirecciona
       flash[:notice] = "section created succesfully."
-      redirect_to(:action => "list")
+      redirect_to(:action => "list", :page_id => @page.id)
     else
       #sino, lo manda de nuevo al new
       @sections_count = Section.count + 1
@@ -52,7 +53,7 @@ class SectionsController < ApplicationController
     if @section.update_attributes(params[:section])
       #redirecciona
       flash[:notice] = "section edited succesfully."
-      redirect_to(:action => "show", :id => @section.id)
+      redirect_to(:action => "show", :id => @section.id, :page_id => @page.id)
     else
       #sino, lo manda de nuevo al edit
       @sections_count = Section.count
@@ -70,7 +71,15 @@ class SectionsController < ApplicationController
     Section.find(params[:id]).destroy
     #como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
     flash[:notice] = "section destroyed succesfully."
-    redirect_to(:action => "list")
-  end  
+    redirect_to(:action => "list", :page_id => @page.id)
+  end
+
+  private
+
+  def find_page
+    if params[:page_id]
+      @page = Page.find_by_id(params[:page_id])
+    end
+  end
   
 end

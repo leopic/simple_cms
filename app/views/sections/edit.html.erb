@@ -2,7 +2,7 @@
 	
     <h1>Edit Section</h1>
 
-	<%= link_to("< Back to list", {:action => "list"}, :class => "back-link btn") %>	
+	<%= link_to("< Back to sections", {:action => "list", :page_id => @page.id, :subject_id => params[:subject_id]}, :class => "back-link btn") %>
 	
 	<%= form_for(:section, :url => {:action => "update", :id => @section.id}) do |f| %>	
 	
@@ -10,7 +10,7 @@
 	
 		<div class="actions">
 			<%= submit_tag("Update Section", :class => "btn info") %>
-			<%= link_to("Cancel", {:action => "list"}, :class => "btn") %>
+			<%= link_to("Cancel", {:action => "list", :page_id => @page.id, :subject_id => params[:subject_id]}, :class => "btn") %>
 		</div>	
 
 	<% end %>

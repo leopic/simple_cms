@@ -7,7 +7,6 @@
     	<tr class="header">
     		<th>Position</th>
     		<th>Subject</th>
-    		<th>Pages</th>
     		<th>Created</th>
     		<th>Updated</th>
     		<th>Actions</th>
@@ -17,12 +16,11 @@
     	<tr>
     		<td><%= subject.position %></td>
     		<td><%= subject.name %></td>
-    		<td>TBD</td>
 			<td><%= subject.created_at.strftime("%m/%d/%y") %></td>
     		<td><%= subject.updated_at.strftime("%m/%d/%y") %></td>
 			<td><%= status_tag(subject.visible) %></td>
     		<td class="cta">
-    			<%= link_to("View Pages", 	{:controller => 'pages',	:action => 'list', 		:subject_id => subject.id}, 	:class => "action show btn primary") %>
+    			<%= link_to("Child Pages", 	{:controller => 'pages',	:action => 'list', 		:subject_id => subject.id}, 	:class => "action show btn") %>
 				<%= link_to("Show", 		{:action => 'show', 		:id => subject.id}, 	:class => "action show btn primary") %>
 				<%= link_to("Edit", 		{:action => 'edit', 		:id => subject.id}, 	:class => "action edit btn info") %>
 				<%= link_to("Delete", 		{:action => 'delete', 		:id => subject.id}, 	:class => "action delete btn danger") %>
