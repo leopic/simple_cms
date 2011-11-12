@@ -1,6 +1,7 @@
 class AccessController < ApplicationController
   
   before_filter :confirm_logged_in, :only => [:index, :menu]
+
   def index
     menu
     render('menu')

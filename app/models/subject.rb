@@ -1,5 +1,8 @@
+require File.join(RAILS_ROOT, 'lib', 'position_mover.rb')
 class Subject < ActiveRecord::Base
-	
+
+	include PositionMover
+
 	has_many :pages
 	
 	validates_presence_of :name

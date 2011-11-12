@@ -1,5 +1,8 @@
+require File.join(RAILS_ROOT, 'lib', 'position_mover.rb')
 class Page < ActiveRecord::Base
-	
+
+  include PositionMover
+
 	belongs_to :subject
 	has_many :sections	
 	has_and_belongs_to_many :editors, :class_name => "AdminUser"
@@ -14,5 +17,10 @@ class Page < ActiveRecord::Base
   scope :visible, where(:visible => true)
 	scope :invisible, where(:visible => false)
   scope :sorted, order("pages.position ASC")
+
+  private
+  def position_scope
+    "pages.subject_id = #{subject_id.to_i}"
+  end
 	
 end

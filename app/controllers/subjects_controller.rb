@@ -25,10 +25,12 @@ class SubjectsController < ApplicationController
 	end
 	
 	def create
+    new_position = params[:subject].delete(:position)
 		#nueva instancia usando parametros
 		@subject = Subject.new(params[:subject])
 		#si el save funciona
 		if @subject.save
+      @subject.move_to_position(new_position)
 			#redirecciona
 			flash[:notice] = "Subject created succesfully."
 			redirect_to(:action => "list")
@@ -44,16 +46,18 @@ class SubjectsController < ApplicationController
 		@subject_count = Subject.count
 	end	
 	
-	def update				
-		#nueva instancia usando parametros
+	def update
+    new_position = params[:subject].delete(:position)
+		# nueva instancia usando parametros
 		@subject = Subject.find(params[:id])
-		#si el update funca
+		# si el update funca
 		if @subject.update_attributes(params[:subject])
-			#redirecciona
+			# redirecciona
+      @subject.move_to_position(new_position)
 			flash[:notice] = "Subject edited succesfully."
 			redirect_to(:action => "show", :id => @subject.id)
 		else
-			#sino, lo manda de nuevo al edit
+			# sino, lo manda de nuevo al edit
 			@subject_count = Subject.count + 1
 			render("edit")
 		end
@@ -64,9 +68,11 @@ class SubjectsController < ApplicationController
 	end
 	
 	def destroy
-		#nueva instancia usando parametros
-		Subject.find(params[:id]).destroy
-		#como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
+		# nueva instancia usando parametros
+		subject = Subject.find(params[:id]).destroy
+    subject.move_to_position(nil)
+    subject.destroy
+		# como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
 		flash[:notice] = "Subject destroyed succesfully."
 		redirect_to(:action => "list")
 	end

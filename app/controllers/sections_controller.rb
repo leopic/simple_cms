@@ -17,23 +17,25 @@ class SectionsController < ApplicationController
   end
   
   def new
-    #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
-    #@section = Section.new(:name => "default")
+    # solo se usa si queremos presentar algo en para el create, algun valor default por ejem
+    # @section = Section.new(:name => "default")
     @section = Section.new(:page_id => @page.id)
     @sections_count = @page.sections.size + 1
     @pages_available = Page.all(:select => :id).collect(&:id)
   end
   
   def create
-    #nueva instancia usando parametros
+    # nueva instancia usando parametros
+    new_position = params[:section].delete(:position)
     @section = Section.new(params[:section])
-    #si el save funciona
+    # si el save funciona
     if @section.save
-      #redirecciona
+      @section.move_to_position(new_position)
+      # redirecciona
       flash[:notice] = "section created succesfully."
       redirect_to(:action => "list", :page_id => @page.id)
     else
-      #sino, lo manda de nuevo al new
+      # sino, lo manda de nuevo al new
       @sections_count = @page.sections.size + 1
       @pages_available = Page.all(:select => :id).collect(&:id)
       render("new")
@@ -46,14 +48,16 @@ class SectionsController < ApplicationController
     @pages_available = Page.all(:select => :id).collect(&:id)
   end 
   
-  def update        
-    #nueva instancia usando parametros
+  def update
+    new_position = params[:section].delete(:position)
+    # nueva instancia usando parametros
     @section = Section.find(params[:id])
-    #si el update funca
+    # si el update funca
     if @section.update_attributes(params[:section])
-      #redirecciona
+      @section.move_to_position(new_position)
+      # redirecciona
       flash[:notice] = "section edited succesfully."
-      redirect_to(:action => "show", :id => @section.id, :page_id => @page.id)
+      redirect_to(:action => "show", :id => @section.id, :page_id => @section.page_id)
     else
       #sino, lo manda de nuevo al edit
       @sections_count = @page.sections.size
@@ -68,7 +72,9 @@ class SectionsController < ApplicationController
   
   def destroy
     #nueva instancia usando parametros
-    Section.find(params[:id]).destroy
+    section = Section.find(params[:id]).destroy
+    section.move_to_position(nil)
+    section.destroy
     #como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
     flash[:notice] = "section destroyed succesfully."
     redirect_to(:action => "list", :page_id => @page.id)

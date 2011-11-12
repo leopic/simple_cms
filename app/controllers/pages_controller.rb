@@ -24,11 +24,13 @@ class PagesController < ApplicationController
 
   def create
     #nueva instancia usando parametros
+    new_position = params[:page].delete(:position)
     @page = Page.new(params[:page])
     @subjects_count = Subject.count
     #si el save funciona
     if @page.save
-      #redirecciona
+      # redirecciona
+      @page.move_to_position(new_position)
       flash[:notice] = "Page created succesfully."
       redirect_to(:action => "list", :subject_id => @subject.id)
     else
@@ -46,15 +48,17 @@ class PagesController < ApplicationController
   end
   
   def update
-    #nueva instancia usando parametros
+    # nueva instancia usando parametros
     @page = Page.find(params[:id])
-    #si el update funca
+    # si el update funca
+    new_position = params[:page].delete(:position)
     if @page.update_attributes(params[:page])
-      #redirecciona
+      @page.move_to_position(new_position)
+      # redirecciona
       flash[:notice] = "Page edited succesfully."
       redirect_to(:action => "show", :id => @page.id, :subject_id => @page.subject_id)
     else
-      #sino, lo manda de nuevo al edit
+      # sino, lo manda de nuevo al edit
       @subjects_count = Subject.all(:select => :id).collect(&:id)
       @pages_count = @subject.pages.size
       render('edit')
@@ -67,7 +71,9 @@ class PagesController < ApplicationController
   
   def destroy
     #nueva instancia usando parametros
-    Page.find(params[:id]).destroy
+    page = Page.find(params[:id]).destroy
+    page.move_to_position(nil)
+    page.destroy
     #como no vamos a hacer nada con el objeto no ocupamos instanciarlo/mostrarlo, nos ahorramos la variable de instancia
     flash[:notice] = "Page destroyed succesfully."
     redirect_to(:action => "list", :subject_id => @subject.id)
