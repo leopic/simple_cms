@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def list
-    @pages = Page.order("pages.position ASC").where(:subject_id => @subject.id)
+    @pages = Page.sorted.where(:subject_id => @subject.id)
   end
 
   def show
@@ -18,7 +18,7 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new(:subject_id => @subject.id)
-    @pages_count = Page.count + 1
+    @pages_count = @subject.pages.size + 1
     @subjects_count = Subject.all(:select => :id).collect(&:id)
   end
 
@@ -33,7 +33,7 @@ class PagesController < ApplicationController
       redirect_to(:action => "list", :subject_id => @subject.id)
     else
       #sino, lo manda de nuevo al new
-      @pages_count = Page.count
+      @pages_count = @subject.pages.size + 1
       @subjects_count = Subject.all(:select => :id).collect(&:id)
       render("new")
     end
@@ -41,7 +41,7 @@ class PagesController < ApplicationController
   
   def edit
     @page = Page.find(params[:id])
-    @pages_count = Page.count
+    @pages_count = @subject.pages.size
     @subjects_count = Subject.all(:select => :id).collect(&:id)
   end
   
@@ -56,7 +56,7 @@ class PagesController < ApplicationController
     else
       #sino, lo manda de nuevo al edit
       @subjects_count = Subject.all(:select => :id).collect(&:id)
-      @pages_count = Page.count
+      @pages_count = @subject.pages.size
       render('edit')
     end
   end

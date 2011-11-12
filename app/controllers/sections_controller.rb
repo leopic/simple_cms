@@ -9,7 +9,7 @@ class SectionsController < ApplicationController
   end
   
   def list
-    @sections = Section.order("sections.position ASC").where(:page_id => @page.id)
+    @sections = Section.sorted.where(:page_id => @page.id)
   end
   
   def show
@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
     #solo se usa si queremos presentar algo en para el create, algun valor default por ejem
     #@section = Section.new(:name => "default")
     @section = Section.new(:page_id => @page.id)
-    @sections_count = Section.count + 1
+    @sections_count = @page.sections.size + 1
     @pages_available = Page.all(:select => :id).collect(&:id)
   end
   
@@ -34,7 +34,7 @@ class SectionsController < ApplicationController
       redirect_to(:action => "list", :page_id => @page.id)
     else
       #sino, lo manda de nuevo al new
-      @sections_count = Section.count + 1
+      @sections_count = @page.sections.size + 1
       @pages_available = Page.all(:select => :id).collect(&:id)
       render("new")
     end
@@ -42,7 +42,7 @@ class SectionsController < ApplicationController
   
   def edit
     @section = Section.find(params[:id])
-    @sections_count = Section.count
+    @sections_count = @page.sections.size
     @pages_available = Page.all(:select => :id).collect(&:id)
   end 
   
@@ -56,7 +56,7 @@ class SectionsController < ApplicationController
       redirect_to(:action => "show", :id => @section.id, :page_id => @page.id)
     else
       #sino, lo manda de nuevo al edit
-      @sections_count = Section.count
+      @sections_count = @page.sections.size
       @pages_available = Page.all(:select => :id).collect(&:id)
       render("edit")
     end
