@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>simpleCMS: <%= @page_title || 'browse' %></title>
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Francois+One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css">
+		<%= stylesheet_link_tag :all %>
+		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
+		<div class="container">
+			<%= yield %>
+			<footer>
+				<h5>LEOPiC - git@github.com:leopic/simple_cms.git</h5>
+			</footer>
+		</div>
+	</body>
+</html>
