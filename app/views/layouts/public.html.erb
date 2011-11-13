@@ -10,6 +10,9 @@
 	</head>
 	<body>
 		<div class="container">
+          <nav>
+            <%= render(:partial => 'layouts/navigation', :locals => {:subjects => @subjects}) %>
+          </nav>
 			<%= yield %>
 			<footer>
 				<h5>LEOPiC - git@github.com:leopic/simple_cms.git</h5>
