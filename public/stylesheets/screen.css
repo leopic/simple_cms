@@ -1,5 +1,5 @@
 .container header h1{
-	font-family: "Oswald";
+	font-family: "Oswald", sans-serif;
 	font-weight:normal;
 	padding: 20px 0 0 0;
 	color: #0064CD;
@@ -30,4 +30,8 @@ body {
 
 .btn {
     text-transform: lowercase;
+}
+
+footer {
+    clear: both;
 }

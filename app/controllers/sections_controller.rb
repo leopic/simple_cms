@@ -28,12 +28,13 @@ class SectionsController < ApplicationController
     # nueva instancia usando parametros
     new_position = params[:section].delete(:position)
     @section = Section.new(params[:section])
+    @subject = Subject.find(@section.page_id)
     # si el save funciona
     if @section.save
       @section.move_to_position(new_position)
       # redirecciona
       flash[:notice] = "section created succesfully."
-      redirect_to(:action => "list", :page_id => @page.id)
+      redirect_to(:action => "list", :page_id => @page.id, :subject_id => @subject.id)
     else
       # sino, lo manda de nuevo al new
       @sections_count = @page.sections.size + 1
@@ -52,12 +53,13 @@ class SectionsController < ApplicationController
     new_position = params[:section].delete(:position)
     # nueva instancia usando parametros
     @section = Section.find(params[:id])
+    @subject = Subject.find(@section.page_id)
     # si el update funca
     if @section.update_attributes(params[:section])
       @section.move_to_position(new_position)
       # redirecciona
       flash[:notice] = "section edited succesfully."
-      redirect_to(:action => "show", :id => @section.id, :page_id => @section.page_id)
+      redirect_to(:action => "show", :id => @section.id, :page_id => @section.page_id, :subject_id => @subject.id)
     else
       #sino, lo manda de nuevo al edit
       @sections_count = @page.sections.size

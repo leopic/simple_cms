@@ -1,7 +1,7 @@
 	<% @page_title = "sections list" %>	
 	
 	<h1>All Sections</h1>
-    <%= link_to("< Back to Pages List", {:controller => "pages", :action => "list", :subject_id => params[:subject_id]}, :class => "back-link btn") %>
+    <%= link_to("< Back to Pages List", {:controller => "pages", :action => "list", :page_id => params[:page_id], :subject_id => params[:subject_id]}, :class => "back-link btn") %>
 	<%= link_to("Add New Section", {:action => 'new', :page_id => @page.id, :subject_id => params[:subject_id]}, :class => "action new btn primary") %>
 	
     <table class="list">
