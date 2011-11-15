@@ -11,8 +11,8 @@ development:
   reconnect: false
   database: simple_cms_development
   pool: 5
-  username: simple_cms
-  password: secretpassword
+  username: root
+  password: root
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   database: simple_cms_test
   pool: 5
   username: root
-  password:
+  password: root
   host: localhost
 
 production:
@@ -35,5 +35,5 @@ production:
   database: simple_cms_production
   pool: 5
   username: root
-  password:
+  password: root
   host: localhost
