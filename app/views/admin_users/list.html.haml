@@ -1,0 +1,33 @@
+- @page_title = "adminUsers list"
+
+%h1 All AdminUsers
+
+= link_to("Add New AdminUser", {:action => 'new'}, :class => "action new btn")
+    
+%h2
+  = pluralize(@admin_users.size, 'admin user')
+  %small found
+    
+%table.list
+
+  %tr.header
+    %th Username
+    %th Name
+    %th Email
+    %th Actions
+
+    - @admin_users.each do |admin_user|
+
+      %tr
+        %td
+          = admin_user.username
+
+        %td
+          = admin_user.name
+
+        %td
+          = mail_to(admin_user.email)
+
+        %td.cta
+          = link_to("Edit",	{:action => 'edit',	:id => admin_user.id }, :class => "action edit btn info")
+          = link_to("Delete",	{:action => 'delete',	:id => admin_user.id}, 	:class => "action delete btn danger")

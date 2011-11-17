@@ -1,0 +1,10 @@
+- page_title = "Admin Menu"
+
+.menu
+  %h1 Admin Menu
+  %small logged in as: #{session[:username]}
+
+  %ul
+    %li= link_to("Manage Subjects", :controller => 'subjects')
+    %li= link_to("Manage Admin Users", '#')
+    %li= link_to("Logout", :action => 'logout')
