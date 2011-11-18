@@ -1,0 +1,18 @@
+- page_title = "Admin Login"
+
+%h1 login
+.login
+	= form_tag(:action => 'attempt_login') do
+		.clearfix
+			= label_tag(:username)
+			.input
+				= text_field_tag(:username)
+
+		.clearfix
+			= label_tag(:password)
+			.input
+				= password_field_tag(:password)
+
+		.actions
+			= submit_tag("Log In", :class => 'btn primary')
+			= link_to("Cancel", '#', :class => 'btn')
